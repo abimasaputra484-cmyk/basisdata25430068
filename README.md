@@ -1,11 +1,6 @@
-# Praktikum Basis Data
+## Identitas Proyek
 
-## Identitas
-- Nama: Abima Saputra
-- NIM: 25430068
-- Kelas: C
-
-## Modul 1
-Lingkungan Kerja MariaDB di XAMPP dan Git.
-
-Database praktikum yang digunakan adalah `kopma_068`.
+- Tema: Sistem Informasi Klinik
+- Database: `klinik_068`
+- Developer: `dev_068`
+- Scope: Pengelolaan data dan proses operasional klinik.
