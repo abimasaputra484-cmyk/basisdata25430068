@@ -12,3 +12,14 @@ IDENTIFIED BY '<password_kerja>';
 
 GRANT ALL PRIVILEGES ON kopma_068.*
 TO 'mhs_068'@'localhost';
+
+-- E.2 Skrip rerunnable
+
+CREATE DATABASE IF NOT EXISTS kopma_068
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+CREATE USER IF NOT EXISTS 'mhs_068'@'localhost'
+IDENTIFIED BY 'PASSWORD_KERJA';
+
+GRANT ALL PRIVILEGES ON kopma_068.* TO 'mhs_068'@'localhost';
