@@ -5,8 +5,7 @@
 ## 1. Latar belakang dan ruang lingkup
 Sistem toko daring membantu pengelolaan katalog produk, pelanggan, pesanan, pembayaran, dan pengiriman. Analisis ini mengidentifikasi proses bisnis, data yang dibutuhkan, aturan bisnis, serta informasi yang perlu dihasilkan.
 
-**Batasan sistem:** [ISI SENDIRI: apa yang termasuk dan tidak termasuk dalam sistem]
-
+**Batasan sistem:** Sistem toko daring mencakup pengelolaan katalog produk dan kategori, data pelanggan, pembuatan pesanan, pencatatan pembayaran, serta pengelolaan pengiriman. Sistem menyimpan harga produk, ongkos kirim, dan alamat tujuan pada saat transaksi untuk mempertahankan riwayat pesanan. Sistem ini tidak mencakup integrasi langsung dengan bank, pengelolaan akuntansi perusahaan, dan sistem internal perusahaan kurir. Pembayaran dicatat dan diverifikasi oleh petugas yang berwenang.
 ## 2. Proses bisnis
 
 | ID | Proses | Aktor utama | Data yang digunakan/dihasilkan |
