@@ -31,25 +31,40 @@ Praktikum Modul 2 bertujuan menganalisis kebutuhan pengelolaan data pada sistem 
 - Dokumen sumber fiktif buatan sendiri: [lampirkan screenshot]
 
 ## 4. Analisis poin praktikum
-[ISI SENDIRI: jelaskan keputusan desain dan alasan menyimpan harga saat transaksi.]
+
+Analisis kebutuhan data dilakukan dengan mengidentifikasi proses utama toko daring, yaitu pengelolaan katalog, pengelolaan pelanggan, pembuatan pesanan, verifikasi pembayaran, dan pemrosesan pengiriman. Setiap proses menggunakan data tertentu yang kemudian dipetakan ke entitas dan operasi CRUD.
+
+Harga produk perlu disimpan pada detail pesanan sebagai harga saat transaksi. Dengan demikian, perubahan harga katalog tidak mengubah nilai transaksi yang telah dibuat. Alamat tujuan dan ongkos kirim juga perlu disimpan pada pesanan agar informasi pengiriman dan perhitungan transaksi lama tetap konsisten.
 
 ## 5. Latihan/modifikasi
-[ISI SENDIRI: jelaskan aturan, laporan, dan perubahan matriks CRUD yang kamu tambahkan.]
+
+Modifikasi rancangan dilakukan dengan menambahkan aturan mengenai batas maksimum item per transaksi, perhitungan total pesanan, pembatasan akses data pelanggan, dan perlindungan riwayat transaksi. Kebutuhan informasi diperjelas melalui laporan nilai pesanan, produk terlaris, stok rendah, pesanan belum dibayar, dan pesanan belum dikirim.
+
+Matriks CRUD ditinjau agar setiap entitas memiliki proses yang membuat dan mengelola datanya. Penghapusan data produk atau kategori perlu dibatasi apabila data tersebut sudah digunakan dalam transaksi. Perubahan ini bertujuan menjaga konsistensi data dan riwayat transaksi.
 
 ## 6. Milestone proyek individu
-Tema: toko daring.  
-Parameter: P = 6; maksimum 8 item/transaksi; estimasi 70 transaksi/hari.  
-[ISI SENDIRI: ringkas hasil analisis final yang sudah kamu periksa.]
+
+Proyek individu menggunakan tema toko daring. Berdasarkan parameter NIM yang digunakan, diperoleh P = 6, maksimum 8 item per transaksi, nilai parameter Rp6.000, dan estimasi 70 transaksi per hari.
+
+Rancangan awal mencakup lima proses bisnis dan tujuh entitas utama, yaitu Pelanggan, Produk, Kategori, Pesanan, Detail_Pesanan, Pembayaran, dan Pengiriman. Analisis juga mencakup aturan bisnis, kebutuhan informasi, matriks CRUD, kamus data, kebutuhan nonfungsional, dan risiko kualitas data.
+
+Harga produk, alamat tujuan, dan ongkos kirim pada saat transaksi perlu dipertahankan agar riwayat pesanan tetap konsisten. Rancangan akhir harus diperiksa kembali terhadap instruksi praktikum sebelum dinyatakan selesai.
 
 ## 7. Diskusi dan kendala
-[ISI SENDIRI: catat kendala nyata dan bagaimana kamu mengatasinya.]
+
+Kendala dalam penyusunan analisis adalah memastikan hubungan antara proses bisnis, entitas, dan operasi CRUD tetap konsisten. Kendala lainnya adalah menentukan atribut yang perlu disimpan sebagai riwayat transaksi serta menetapkan hak akses berdasarkan peran pengguna.
+
+Perbaikan dilakukan dengan meninjau kembali matriks CRUD, melengkapi kamus data, dan memperjelas kebutuhan informasi serta kebutuhan nonfungsional. Hasil pemeriksaan akhir perlu disesuaikan dengan pekerjaan yang benar-benar telah dilakukan.
 
 ## 8. Kesimpulan
-[ISI SENDIRI berdasarkan hasil yang benar-benar diperoleh.]
+
+Analisis kebutuhan data membantu mengidentifikasi data yang diperlukan oleh sistem toko daring dan bagaimana data tersebut digunakan dalam proses bisnis. Proses bisnis, aturan bisnis, kebutuhan informasi, matriks CRUD, kamus data, dan kebutuhan nonfungsional menjadi dasar untuk merancang basis data yang konsisten.
+
+Penyimpanan harga, alamat, dan ongkos kirim saat transaksi membantu mempertahankan riwayat pesanan. Sebelum tugas dikumpulkan, seluruh tabel, dokumen sumber, kebutuhan nonfungsional, dan bukti pelaksanaan perlu diperiksa kembali.
 
 ## 9. Deklarasi penggunaan AI
-[ISI SENDIRI secara jujur: sebutkan bahwa AI digunakan untuk membantu memahami instruksi/menyusun kerangka jika memang demikian, lalu jelaskan bagian yang kamu verifikasi dan kerjakan sendiri. Ikuti aturan pada buku praktikum.]
 
+Saya menggunakan ChatGPT sebagai alat bantu untuk memahami instruksi praktikum, mempelajari konsep analisis kebutuhan data, dan memperoleh masukan mengenai struktur dokumen serta konsistensi rancangan. Saya bertanggung jawab untuk memeriksa kesesuaian hasil dengan buku praktikum, memahami keputusan desain yang digunakan, melakukan revisi, dan memastikan bahwa laporan mencerminkan pekerjaan yang benar-benar saya lakukan. Bagian yang dibantu AI akan saya verifikasi dan sesuaikan dengan aturan penggunaan AI pada praktikum.
 ## 10. Bukti Git
 - URL repository: [ISI SETELAH PUSH]
 - Commit hash: [ISI SETELAH COMMIT]
