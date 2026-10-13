@@ -3,10 +3,24 @@
 > Kerangka laporan. Isi berdasarkan kegiatan yang benar-benar kamu lakukan. Jangan mengaku memiliki screenshot, commit, atau hasil uji yang belum dibuat.
 
 ## 1. Tujuan
-[ISI SENDIRI berdasarkan tujuan pada buku praktikum.]
+
+Praktikum Modul 2 bertujuan menganalisis kebutuhan pengelolaan data pada sistem yang dipilih. Analisis dilakukan dengan mengidentifikasi proses bisnis, entitas, aturan bisnis, kebutuhan informasi, operasi CRUD, kamus data, serta kebutuhan nonfungsional sebagai dasar perancangan basis data.
 
 ## 2. Dasar teori
-[ISI SENDIRI: ringkas konsep proses bisnis, entitas, aturan bisnis, kebutuhan informasi, CRUD, dan kamus data menggunakan buku praktikum.]
+
+**Proses bisnis** adalah rangkaian aktivitas yang dilakukan untuk mencapai tujuan tertentu dalam suatu sistem.
+
+**Entitas** adalah objek atau hal yang datanya perlu disimpan dan dikelola dalam basis data.
+
+**Aturan bisnis** adalah ketentuan yang membatasi atau mengatur aktivitas dan pengelolaan data dalam sistem.
+
+**Kebutuhan informasi** menjelaskan informasi yang dibutuhkan pengguna untuk menjalankan aktivitas atau mengambil keputusan.
+
+**CRUD** merupakan singkatan dari Create, Read, Update, dan Delete, yaitu operasi untuk menambah, membaca, memperbarui, dan menghapus data.
+
+**Kamus data** mendokumentasikan elemen data, termasuk nama, tipe atau format, aturan validasi, dan penanggung jawab data.
+
+**Kebutuhan nonfungsional** menjelaskan persyaratan kualitas dan batasan sistem, misalnya keamanan, pembatasan hak akses, privasi, serta kinerja yang dapat diukur.
 
 ## 3. Hasil praktikum
 - Tabel proses bisnis: [lampirkan screenshot]
