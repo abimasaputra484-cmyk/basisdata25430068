@@ -1,10 +1,10 @@
 -- ============================================================================
--- Berkas : p06_data_kopma_25430062.sql
--- NAMA   : Elvin Purna Hidayat (NIM: 25430062)
--- TOPIK  : Skrip Pengisian Data Sampel Kopma_062 - Modul 6
+-- Berkas : p06_data_kopma_25430068.sql
+-- NAMA   : Abima Saputra (NIM: 25430068)
+-- TOPIK  : Skrip Pengisian Data Sampel Kopma_068 - Modul 6
 -- ============================================================================
 
-USE kopma_062;
+USE kopma_068;
 
 -- Bersihkan data lama jika ada (urutan dari anak ke induk)
 DELETE FROM detail_pembelian;
@@ -33,7 +33,7 @@ INSERT INTO petugas (kode_petugas, nama_petugas, peran_petugas) VALUES
 
 -- 2. Data Anggota (Minimal 3, 1 nonaktif)
 INSERT INTO anggota (no_anggota, nim_anggota, nama_anggota, prodi_anggota, no_hp_anggota, status_anggota, tgl_daftar_anggota) VALUES
-('A-0457', '25430062', 'Elvin Purna Hidayat', 'Ilmu Komputer', '081234567890', 'aktif', '2026-01-10'),
+('A-0468', '25430068', 'Abima Saputra', 'Ilmu Komputer', '081234567890', 'aktif', '2026-01-10'),
 ('A-0458', '25430061', 'Budi Santoso', 'Manajemen', '081298765432', 'aktif', '2026-02-15'),
 ('A-0102', '24430010', 'Siti Rahma', 'Akuntansi', '085678901234', 'nonaktif', '2024-05-20');
 
