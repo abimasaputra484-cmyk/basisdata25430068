@@ -1,10 +1,10 @@
 -- ============================================================================
--- Berkas : p05_ddl_kopma_25430062.sql
--- NAMA   : Elvin Purna Hidayat (NIM: 25430062)
--- TOPIK  : Skrip DDL Kanonik Koperasi Mahasiswa (Kopma_062) - Modul 5
+-- Berkas : p05_ddl_kopma_25430068.sql
+-- NAMA   : Abima Saputra (NIM: 25430068)
+-- TOPIK  : Skrip DDL Kanonik Koperasi Mahasiswa (Kopma_068) - Modul 5
 -- ============================================================================
 
-USE kopma_062;
+USE kopma_068;
 
 -- ----------------------------------------------------------------------------
 -- 1. PENGHAPUSAN TABEL (Urutan dari Anak ke Induk)
