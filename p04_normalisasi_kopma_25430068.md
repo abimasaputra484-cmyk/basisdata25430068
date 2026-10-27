@@ -1,7 +1,7 @@
 # Dokumen Normalisasi Koperasi Mahasiswa Sejahtera (Kopma)
 
-**Penyusun:** Elvin Purna Hidayat 
-**NPM**: 25430062
+**Penyusun:** Abima Saputra 
+**NPM**: 25430068
 **Kelas**: C
 **Mata Kuliah**: Basis Data  
 
