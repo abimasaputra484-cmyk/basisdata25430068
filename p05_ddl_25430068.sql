@@ -1,10 +1,10 @@
 -- ============================================================================
--- Berkas : p05_ddl_25430062.sql
--- NAMA   : Elvin Purna Hidayat (NIM: 25430062)
--- TEMA   : Toko Daring (Viinjay Store) - Modul 5
+-- Berkas : p05_ddl_25430068.sql
+-- NAMA   : Abima Saputra (NIM: 25430068)
+-- TEMA   : Toko Daring (Abima Store) - Modul 5
 -- ============================================================================
 
-USE toko_062;
+USE toko_068;
 
 -- Urutan Hapus Wajib dari Anak ke Induk
 DROP TABLE IF EXISTS pengiriman;
