@@ -1,10 +1,10 @@
 -- ============================================================================
--- Berkas : p06_data_25430062.sql
--- NAMA   : Elvin Purna Hidayat (NIM: 25430062)
--- TEMA   : Toko Daring (Viinjay Store G62) - Modul 6
+-- Berkas : p06_data_25430068.sql
+-- NAMA   : Abima Saputra (NIM: 25430068)
+-- TEMA   : Toko Daring (Abima Store G68) - Modul 6
 -- ============================================================================
 
-USE toko_062;
+USE toko_068;
 
 DELETE FROM pengiriman;
 DELETE FROM pembayaran;
@@ -23,7 +23,7 @@ ALTER TABLE pengiriman AUTO_INCREMENT = 1;
 
 -- 1. Data Pelanggan (Minimal 5 Baris)
 INSERT INTO pelanggan (nama_pelanggan, email_pelanggan, no_hp_pelanggan, alamat_pelanggan) VALUES
-('Elvin Purna Hidayat', 'galeh@gmail.com', '081234567890', 'Jl. Kampus UM Metro No. 62, Metro'),
+('Abima Saputra', 'abima@gmail.com', '081234567890', 'Jl. Kampus UM Metro No. 68, Metro'),
 ('Ahmad Fauzi', 'fauzi@yahoo.com', '085269001122', 'Jl. Yos Sudarso No. 15, Bandar Lampung'),
 ('Siti Aminah', 'siti@gmail.com', '081377889900', 'Jl. Kartini No. 8, Metro Pusat'),
 ('Rian Pratama', 'rian@outlook.com', '082144556677', 'Jl. Teuku Umar No. 102, Kedaton'),
@@ -35,7 +35,7 @@ INSERT INTO kategori (nama_kategori) VALUES
 
 -- 3. Data Produk (Minimal 5 Baris)
 INSERT INTO produk (id_kategori, kode_produk, nama_produk, harga_produk, stok_produk) VALUES
-(2, 'PRD-001', 'Mouse Wireless Silent G62', 150000.00, 50),
+(2, 'PRD-001', 'Mouse Wireless Silent G68', 150000.00, 50),
 (2, 'PRD-002', 'Keyboard Mechanical RGB', 450000.00, 30),
 (3, 'PRD-003', 'SSD NVMe 512GB High Speed', 650000.00, 25),
 (4, 'PRD-004', 'Headset Gaming 7.1 Surround', 350000.00, 40),
@@ -44,7 +44,7 @@ INSERT INTO produk (id_kategori, kode_produk, nama_produk, harga_produk, stok_pr
 -- 4. Generator Data Transaksi Utama (Pesanan, Detail, Pembayaran, Pengiriman)
 -- Dibuat minimal 90 baris detail_pesanan (10 x P = 90) tersebar pada 3 tanggal berbeda
 DELIMITER $$
-CREATE PROCEDURE generate_sample_orders_062()
+CREATE PROCEDURE generate_sample_orders_068()
 BEGIN
   DECLARE i INT DEFAULT 1;
   DECLARE cur_pesanan_id INT;
@@ -81,7 +81,7 @@ BEGIN
 
     -- Insert Pengiriman
     INSERT INTO pengiriman (id_pesanan, no_resi_pengiriman, tgl_pengiriman, status_pengiriman)
-    VALUES (cur_pesanan_id, CONCAT('JN-062', LPAD(i, 5, '0')), DATE_ADD(tgl_sample, INTERVAL 1 DAY), 'SELESAI');
+    VALUES (cur_pesanan_id, CONCAT('JN-068', LPAD(i, 5, '0')), DATE_ADD(tgl_sample, INTERVAL 1 DAY), 'SELESAI');
 
     SET i = i + 1;
   END WHILE;
@@ -89,5 +89,5 @@ END$$
 DELIMITER ;
 
 -- Eksekusi Prosedur & Hapus Prosedur
-CALL generate_sample_orders_062();
-DROP PROCEDURE generate_sample_orders_062;
+CALL generate_sample_orders_068();
+DROP PROCEDURE generate_sample_orders_068;
