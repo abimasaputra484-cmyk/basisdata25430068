@@ -1,17 +1,16 @@
-# Dokumen Normalisasi & Skema Relasional - Viinjay Store 
+# Dokumen Normalisasi & Skema Relasional - Abima Store 
 
-**Nama Pengembang:** Elvin Purna Hidayat 
-**NIM:** 25430062  
+**Nama Pengembang:** Abima Saputra 
+**NIM:** 25430068  
 **Kode Tema:** toko  
-**Nama Basis Data:** toko_062  
+**Nama Basis Data:** toko_068  
 
 ---
 
 ## 1. Dokumen Sumber & Unnormalized Form (UNF)
-Titik awal diambil dari **Invoice Pesanan Daring (INV-202610-0062)** pada Modul 2.
+Titik awal diambil dari **Invoice Pesanan Daring (INV-202610-0068)** pada Modul 2.
 
 INVOICE_UNF (id_pesanan, tgl_pesanan, id_pelanggan, nama_pelanggan, email_pelanggan, no_hp_pelanggan, alamat_pengiriman, { id_produk, nama_produk, nama_kategori, qty_detail_pesanan, harga_satuan_detail_pesanan, subtotal_detail }, total_harga_item, ongkir_pesanan, diskon_pesanan, grand_total, status_pembayaran, no_resi_pengiriman, status_pengiriman)
-
 
 ---
 
@@ -19,7 +18,6 @@ INVOICE_UNF (id_pesanan, tgl_pesanan, id_pelanggan, nama_pelanggan, email_pelang
 Menghilangkan grup berulang item barang. Kunci primer menjadi kunci komposit (`id_pesanan`, `id_produk`).
 
 INVOICE_1NF (id_pesanan, id_produk, tgl_pesanan, id_pelanggan, nama_pelanggan, email_pelanggan, no_hp_pelanggan, alamat_pengiriman, nama_produk, nama_kategori, qty_detail_pesanan, harga_satuan_detail_pesanan, subtotal_detail, total_harga_item, ongkir_pesanan, diskon_pesanan, grand_total, status_pembayaran, no_resi_pengiriman, status_pengiriman)
-
 
 ---
 
@@ -67,4 +65,4 @@ Evaluasi ketergantungan fungsional pada seluruh tabel 3NF:
 
 ## 7. Keputusan Penyimpanan Nilai Turunan
 * Atribut `subtotal_detail` ($qty \times harga\_satuan$), `total_harga_item`, dan `grand_total` **DITOLAK / TIDAK DISIMPAN** pada basis data operasional OLTP.
-* **Alasan:** Nilai turunan dihitung secara kueri dinamis (`SUM(qty * harga_satuan) + o
+* **Alasan:** Nilai turunan dihitung secara kueri dinamis (`SUM(qty * harga_satuan)`) untuk konsistensi data.
