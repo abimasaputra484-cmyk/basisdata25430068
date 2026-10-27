@@ -1,6 +1,7 @@
 # Dokumen Normalisasi & Skema Relasional - Abima Store 
 
-**Nama Pengembang:** Abima Saputra 
+**Nama Pengembang:** Abima Saputra
+
 **NIM:** 25430068  
 **Kode Tema:** toko  
 **Nama Basis Data:** toko_068  
