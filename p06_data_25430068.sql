@@ -1,0 +1,317 @@
+-- =====================================================
+-- MODUL 6: DATA KLIKKITA STORE
+-- Nama: Abima Saputra | NPM: 25430068 | Kelas: C
+-- Database: db_klikkita_store
+-- Jalankan setelah p05_ddl_25430068.sql pada database kosong.
+-- =====================================================
+USE db_klikkita_store;
+
+-- Data master: pelanggan
+INSERT INTO pelanggan
+(id_pelanggan, nama_pelanggan, email_pelanggan, no_hp_pelanggan, tgl_daftar_pelanggan, status_pelanggan)
+VALUES
+(1,'Andi Pratama','andi.pratama@example.com','081234560001','2026-01-10','aktif'),
+(2,'Siti Rahma','siti.rahma@example.com','081234560002','2026-01-12','aktif'),
+(3,'Budi Santoso','budi.santoso@example.com','081234560003','2026-02-01','aktif'),
+(4,'Dewi Lestari','dewi.lestari@example.com','081234560004','2026-02-15','nonaktif'),
+(5,'Rizky Maulana','rizky.maulana@example.com','081234560005','2026-03-02','aktif');
+
+-- Data alamat pelanggan
+INSERT INTO alamat_pelanggan
+(id_alamat,id_pelanggan,label_alamat,penerima_alamat,alamat_lengkap,kota_alamat,kode_pos)
+VALUES
+(1,1,'Rumah','Andi Pratama','Jl. Melati No. 10','Bandar Lampung','35111'),
+(2,2,'Rumah','Siti Rahma','Jl. Mawar No. 21','Bandar Lampung','35112'),
+(3,3,'Kantor','Budi Santoso','Jl. Diponegoro No. 8','Metro','34111'),
+(4,4,'Rumah','Dewi Lestari','Jl. Kenanga No. 5','Pringsewu','35373'),
+(5,5,'Kos','Rizky Maulana','Jl. Soekarno Hatta No. 17','Bandar Lampung','35145');
+
+-- Data barang
+INSERT INTO barang
+(id_barang,sku_barang,nama_barang,kategori_barang,harga_barang,stok_barang,status_barang)
+VALUES
+(1,'ATK001','Buku Tulis A5','Alat Tulis',12000,150,'aktif'),
+(2,'ATK002','Pulpen Gel Hitam','Alat Tulis',6500,200,'aktif'),
+(3,'ATK003','Pensil 2B','Alat Tulis',4000,180,'aktif'),
+(4,'DSK001','Organizer Meja','Aksesori Meja',35000,70,'aktif'),
+(5,'DSK002','Tempat Pensil Minimalis','Aksesori Meja',22000,90,'aktif'),
+(6,'DSK003','Sticky Notes Set','Alat Tulis',15000,120,'aktif'),
+(7,'DSK004','Lampu Belajar LED','Elektronik',85000,35,'aktif'),
+(8,'DSK005','Mouse Pad','Aksesori Meja',18000,100,'aktif');
+
+-- Keranjang aktif untuk pelanggan
+INSERT INTO keranjang (id_keranjang,id_pelanggan,tgl_dibuat_keranjang,status_keranjang)
+VALUES
+(1,1,'2026-10-01 09:00:00','aktif'),
+(2,2,'2026-10-01 09:15:00','checkout'),
+(3,3,'2026-10-02 10:00:00','aktif'),
+(4,4,'2026-10-02 11:00:00','dibatalkan'),
+(5,5,'2026-10-03 13:30:00','aktif');
+
+INSERT INTO detail_keranjang (id_keranjang,id_barang,qty_detail_keranjang)
+VALUES
+(1,1,2),(1,2,3),(2,4,1),(3,6,2),(4,5,1),(5,8,2);
+
+-- 60 pesanan utama, tersebar pada 3 tanggal.
+-- Nilai diskon dan ongkir dibuat bervariasi untuk pengujian perhitungan.
+INSERT INTO pesanan (no_pesanan,id_pelanggan,tgl_pesanan,status_pesanan,nama_penerima_pesanan,alamat_pengiriman_pesanan,ongkir_pesanan,persen_diskon_pesanan) VALUES
+('KK-20261001',1,'2026-10-01 08:07:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,0),
+('KK-20261002',2,'2026-10-01 09:14:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,5),
+('KK-20261003',3,'2026-10-01 10:21:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,10),
+('KK-20261004',4,'2026-10-01 11:28:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,0),
+('KK-20261005',5,'2026-10-01 12:35:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,5),
+('KK-20261006',1,'2026-10-01 13:42:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,10),
+('KK-20261007',2,'2026-10-01 14:49:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,0),
+('KK-20261008',3,'2026-10-01 15:56:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,5),
+('KK-20261009',4,'2026-10-01 16:03:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,10),
+('KK-20261010',5,'2026-10-01 17:10:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,0),
+('KK-20261011',1,'2026-10-01 08:17:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,5),
+('KK-20261012',2,'2026-10-01 09:24:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,10),
+('KK-20261013',3,'2026-10-01 10:31:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,0),
+('KK-20261014',4,'2026-10-01 11:38:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,5),
+('KK-20261015',5,'2026-10-01 12:45:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,10),
+('KK-20261016',1,'2026-10-01 13:52:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,0),
+('KK-20261017',2,'2026-10-01 14:59:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,5),
+('KK-20261018',3,'2026-10-01 15:06:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,10),
+('KK-20261019',4,'2026-10-01 16:13:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,0),
+('KK-20261020',5,'2026-10-01 17:20:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,5),
+('KK-20261021',1,'2026-10-02 08:27:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,10),
+('KK-20261022',2,'2026-10-02 09:34:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,0),
+('KK-20261023',3,'2026-10-02 10:41:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,5),
+('KK-20261024',4,'2026-10-02 11:48:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,10),
+('KK-20261025',5,'2026-10-02 12:55:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,0),
+('KK-20261026',1,'2026-10-02 13:02:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,5),
+('KK-20261027',2,'2026-10-02 14:09:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,10),
+('KK-20261028',3,'2026-10-02 15:16:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,0),
+('KK-20261029',4,'2026-10-02 16:23:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,5),
+('KK-20261030',5,'2026-10-02 17:30:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,10),
+('KK-20261031',1,'2026-10-02 08:37:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,0),
+('KK-20261032',2,'2026-10-02 09:44:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,5),
+('KK-20261033',3,'2026-10-02 10:51:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,10),
+('KK-20261034',4,'2026-10-02 11:58:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,0),
+('KK-20261035',5,'2026-10-02 12:05:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,5),
+('KK-20261036',1,'2026-10-02 13:12:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,10),
+('KK-20261037',2,'2026-10-02 14:19:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,0),
+('KK-20261038',3,'2026-10-02 15:26:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,5),
+('KK-20261039',4,'2026-10-02 16:33:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,10),
+('KK-20261040',5,'2026-10-02 17:40:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,0),
+('KK-20261041',1,'2026-10-03 08:47:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,5),
+('KK-20261042',2,'2026-10-03 09:54:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,10),
+('KK-20261043',3,'2026-10-03 10:01:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,0),
+('KK-20261044',4,'2026-10-03 11:08:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,5),
+('KK-20261045',5,'2026-10-03 12:15:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,10),
+('KK-20261046',1,'2026-10-03 13:22:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,0),
+('KK-20261047',2,'2026-10-03 14:29:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,5),
+('KK-20261048',3,'2026-10-03 15:36:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,10),
+('KK-20261049',4,'2026-10-03 16:43:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,0),
+('KK-20261050',5,'2026-10-03 17:50:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,5),
+('KK-20261051',1,'2026-10-03 08:57:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,10),
+('KK-20261052',2,'2026-10-03 09:04:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,0),
+('KK-20261053',3,'2026-10-03 10:11:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,5),
+('KK-20261054',4,'2026-10-03 11:18:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,10),
+('KK-20261055',5,'2026-10-03 12:25:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,0),
+('KK-20261056',1,'2026-10-03 13:32:00','menunggu_pembayaran','Andi Pratama','Jl. Melati No. 10, Bandar Lampung',10000,5),
+('KK-20261057',2,'2026-10-03 14:39:00','diproses','Siti Rahma','Jl. Mawar No. 21, Bandar Lampung',10000,10),
+('KK-20261058',3,'2026-10-03 15:46:00','dikirim','Budi Santoso','Jl. Diponegoro No. 8, Metro',12000,0),
+('KK-20261059',4,'2026-10-03 16:53:00','selesai','Dewi Lestari','Jl. Kenanga No. 5, Pringsewu',12000,5),
+('KK-20261060',5,'2026-10-03 17:00:00','dibatalkan','Rizky Maulana','Jl. Soekarno Hatta No. 17, Bandar Lampung',10000,10);
+
+INSERT INTO detail_pesanan (no_pesanan,id_barang,nama_barang_snapshot,qty_detail_pesanan,harga_satuan_pesanan) VALUES
+('KK-20261001',1,'Buku Tulis A5',2,12000.00),
+('KK-20261002',2,'Pulpen Gel Hitam',3,6500.00),
+('KK-20261003',3,'Pensil 2B',1,4000.00),
+('KK-20261004',4,'Organizer Meja',2,35000.00),
+('KK-20261005',5,'Tempat Pensil Minimalis',3,22000.00),
+('KK-20261006',6,'Sticky Notes Set',1,15000.00),
+('KK-20261007',7,'Lampu Belajar LED',2,85000.00),
+('KK-20261008',8,'Mouse Pad',3,18000.00),
+('KK-20261009',1,'Buku Tulis A5',1,12000.00),
+('KK-20261010',2,'Pulpen Gel Hitam',2,6500.00),
+('KK-20261011',3,'Pensil 2B',3,4000.00),
+('KK-20261012',4,'Organizer Meja',1,35000.00),
+('KK-20261013',5,'Tempat Pensil Minimalis',2,22000.00),
+('KK-20261014',6,'Sticky Notes Set',3,15000.00),
+('KK-20261015',7,'Lampu Belajar LED',1,85000.00),
+('KK-20261016',8,'Mouse Pad',2,18000.00),
+('KK-20261017',1,'Buku Tulis A5',3,12000.00),
+('KK-20261018',2,'Pulpen Gel Hitam',1,6500.00),
+('KK-20261019',3,'Pensil 2B',2,4000.00),
+('KK-20261020',4,'Organizer Meja',3,35000.00),
+('KK-20261021',5,'Tempat Pensil Minimalis',1,22000.00),
+('KK-20261022',6,'Sticky Notes Set',2,15000.00),
+('KK-20261023',7,'Lampu Belajar LED',3,85000.00),
+('KK-20261024',8,'Mouse Pad',1,18000.00),
+('KK-20261025',1,'Buku Tulis A5',2,12000.00),
+('KK-20261026',2,'Pulpen Gel Hitam',3,6500.00),
+('KK-20261027',3,'Pensil 2B',1,4000.00),
+('KK-20261028',4,'Organizer Meja',2,35000.00),
+('KK-20261029',5,'Tempat Pensil Minimalis',3,22000.00),
+('KK-20261030',6,'Sticky Notes Set',1,15000.00),
+('KK-20261031',7,'Lampu Belajar LED',2,85000.00),
+('KK-20261032',8,'Mouse Pad',3,18000.00),
+('KK-20261033',1,'Buku Tulis A5',1,12000.00),
+('KK-20261034',2,'Pulpen Gel Hitam',2,6500.00),
+('KK-20261035',3,'Pensil 2B',3,4000.00),
+('KK-20261036',4,'Organizer Meja',1,35000.00),
+('KK-20261037',5,'Tempat Pensil Minimalis',2,22000.00),
+('KK-20261038',6,'Sticky Notes Set',3,15000.00),
+('KK-20261039',7,'Lampu Belajar LED',1,85000.00),
+('KK-20261040',8,'Mouse Pad',2,18000.00),
+('KK-20261041',1,'Buku Tulis A5',3,12000.00),
+('KK-20261042',2,'Pulpen Gel Hitam',1,6500.00),
+('KK-20261043',3,'Pensil 2B',2,4000.00),
+('KK-20261044',4,'Organizer Meja',3,35000.00),
+('KK-20261045',5,'Tempat Pensil Minimalis',1,22000.00),
+('KK-20261046',6,'Sticky Notes Set',2,15000.00),
+('KK-20261047',7,'Lampu Belajar LED',3,85000.00),
+('KK-20261048',8,'Mouse Pad',1,18000.00),
+('KK-20261049',1,'Buku Tulis A5',2,12000.00),
+('KK-20261050',2,'Pulpen Gel Hitam',3,6500.00),
+('KK-20261051',3,'Pensil 2B',1,4000.00),
+('KK-20261052',4,'Organizer Meja',2,35000.00),
+('KK-20261053',5,'Tempat Pensil Minimalis',3,22000.00),
+('KK-20261054',6,'Sticky Notes Set',1,15000.00),
+('KK-20261055',7,'Lampu Belajar LED',2,85000.00),
+('KK-20261056',8,'Mouse Pad',3,18000.00),
+('KK-20261057',1,'Buku Tulis A5',1,12000.00),
+('KK-20261058',2,'Pulpen Gel Hitam',2,6500.00),
+('KK-20261059',3,'Pensil 2B',3,4000.00),
+('KK-20261060',4,'Organizer Meja',1,35000.00);
+
+INSERT INTO pembayaran (id_pembayaran,no_pesanan,waktu_bayar,metode_pembayaran,nominal_pembayaran,status_pembayaran,referensi_pembayaran) VALUES
+(1,'KK-20261001',NULL,'Transfer Bank',0.00,'menunggu',NULL),
+(2,'KK-20261002','2026-10-01 11:30:00','QRIS',19500.00,'berhasil',NULL),
+(3,'KK-20261003','2026-10-01 12:30:00','E-Wallet',4000.00,'berhasil',NULL),
+(4,'KK-20261004','2026-10-01 13:30:00','Transfer Bank',70000.00,'berhasil',NULL),
+(5,'KK-20261005',NULL,'QRIS',0.00,'gagal',NULL),
+(6,'KK-20261006',NULL,'E-Wallet',0.00,'menunggu',NULL),
+(7,'KK-20261007','2026-10-01 16:30:00','Transfer Bank',170000.00,'berhasil',NULL),
+(8,'KK-20261008','2026-10-01 09:30:00','QRIS',54000.00,'berhasil',NULL),
+(9,'KK-20261009','2026-10-01 10:30:00','E-Wallet',12000.00,'berhasil',NULL),
+(10,'KK-20261010',NULL,'Transfer Bank',0.00,'gagal',NULL),
+(11,'KK-20261011',NULL,'QRIS',0.00,'menunggu',NULL),
+(12,'KK-20261012','2026-10-01 13:30:00','E-Wallet',35000.00,'berhasil',NULL),
+(13,'KK-20261013','2026-10-01 14:30:00','Transfer Bank',44000.00,'berhasil',NULL),
+(14,'KK-20261014','2026-10-01 15:30:00','QRIS',45000.00,'berhasil',NULL),
+(15,'KK-20261015',NULL,'E-Wallet',0.00,'gagal',NULL),
+(16,'KK-20261016',NULL,'Transfer Bank',0.00,'menunggu',NULL),
+(17,'KK-20261017','2026-10-01 10:30:00','QRIS',36000.00,'berhasil',NULL),
+(18,'KK-20261018','2026-10-01 11:30:00','E-Wallet',6500.00,'berhasil',NULL),
+(19,'KK-20261019','2026-10-01 12:30:00','Transfer Bank',8000.00,'berhasil',NULL),
+(20,'KK-20261020',NULL,'QRIS',0.00,'gagal',NULL),
+(21,'KK-20261021',NULL,'E-Wallet',0.00,'menunggu',NULL),
+(22,'KK-20261022','2026-10-02 15:30:00','Transfer Bank',30000.00,'berhasil',NULL),
+(23,'KK-20261023','2026-10-02 16:30:00','QRIS',255000.00,'berhasil',NULL),
+(24,'KK-20261024','2026-10-02 09:30:00','E-Wallet',18000.00,'berhasil',NULL),
+(25,'KK-20261025',NULL,'Transfer Bank',0.00,'gagal',NULL),
+(26,'KK-20261026',NULL,'QRIS',0.00,'menunggu',NULL),
+(27,'KK-20261027','2026-10-02 12:30:00','E-Wallet',4000.00,'berhasil',NULL),
+(28,'KK-20261028','2026-10-02 13:30:00','Transfer Bank',70000.00,'berhasil',NULL),
+(29,'KK-20261029','2026-10-02 14:30:00','QRIS',66000.00,'berhasil',NULL),
+(30,'KK-20261030',NULL,'E-Wallet',0.00,'gagal',NULL),
+(31,'KK-20261031',NULL,'Transfer Bank',0.00,'menunggu',NULL),
+(32,'KK-20261032','2026-10-02 09:30:00','QRIS',54000.00,'berhasil',NULL),
+(33,'KK-20261033','2026-10-02 10:30:00','E-Wallet',12000.00,'berhasil',NULL),
+(34,'KK-20261034','2026-10-02 11:30:00','Transfer Bank',13000.00,'berhasil',NULL),
+(35,'KK-20261035',NULL,'QRIS',0.00,'gagal',NULL),
+(36,'KK-20261036',NULL,'E-Wallet',0.00,'menunggu',NULL),
+(37,'KK-20261037','2026-10-02 14:30:00','Transfer Bank',44000.00,'berhasil',NULL),
+(38,'KK-20261038','2026-10-02 15:30:00','QRIS',45000.00,'berhasil',NULL),
+(39,'KK-20261039','2026-10-02 16:30:00','E-Wallet',85000.00,'berhasil',NULL),
+(40,'KK-20261040',NULL,'Transfer Bank',0.00,'gagal',NULL),
+(41,'KK-20261041',NULL,'QRIS',0.00,'menunggu',NULL),
+(42,'KK-20261042','2026-10-03 11:30:00','E-Wallet',6500.00,'berhasil',NULL),
+(43,'KK-20261043','2026-10-03 12:30:00','Transfer Bank',8000.00,'berhasil',NULL),
+(44,'KK-20261044','2026-10-03 13:30:00','QRIS',105000.00,'berhasil',NULL),
+(45,'KK-20261045',NULL,'E-Wallet',0.00,'gagal',NULL),
+(46,'KK-20261046',NULL,'Transfer Bank',0.00,'menunggu',NULL),
+(47,'KK-20261047','2026-10-03 16:30:00','QRIS',255000.00,'berhasil',NULL),
+(48,'KK-20261048','2026-10-03 09:30:00','E-Wallet',18000.00,'berhasil',NULL),
+(49,'KK-20261049','2026-10-03 10:30:00','Transfer Bank',24000.00,'berhasil',NULL),
+(50,'KK-20261050',NULL,'QRIS',0.00,'gagal',NULL),
+(51,'KK-20261051',NULL,'E-Wallet',0.00,'menunggu',NULL),
+(52,'KK-20261052','2026-10-03 13:30:00','Transfer Bank',70000.00,'berhasil',NULL),
+(53,'KK-20261053','2026-10-03 14:30:00','QRIS',66000.00,'berhasil',NULL),
+(54,'KK-20261054','2026-10-03 15:30:00','E-Wallet',15000.00,'berhasil',NULL),
+(55,'KK-20261055',NULL,'Transfer Bank',0.00,'gagal',NULL),
+(56,'KK-20261056',NULL,'QRIS',0.00,'menunggu',NULL),
+(57,'KK-20261057','2026-10-03 10:30:00','E-Wallet',12000.00,'berhasil',NULL),
+(58,'KK-20261058','2026-10-03 11:30:00','Transfer Bank',13000.00,'berhasil',NULL),
+(59,'KK-20261059','2026-10-03 12:30:00','QRIS',12000.00,'berhasil',NULL),
+(60,'KK-20261060',NULL,'E-Wallet',0.00,'gagal',NULL);
+
+INSERT INTO pengiriman (id_pengiriman,no_pesanan,kurir_pengiriman,ongkir_pengiriman,no_resi,tgl_kirim,status_pengiriman) VALUES
+(1,'KK-20261001','JNE',10000,NULL,NULL,'menunggu'),
+(2,'KK-20261002','J&T',12000,'RESI202600002','2026-10-01 12:00:00','dikemas'),
+(3,'KK-20261003','SiCepat',10000,'RESI202600003','2026-10-01 13:00:00','dikirim'),
+(4,'KK-20261004','JNE',12000,'RESI202600004','2026-10-01 14:00:00','diterima'),
+(5,'KK-20261005','J&T',10000,NULL,NULL,'gagal'),
+(6,'KK-20261006','SiCepat',12000,NULL,NULL,'menunggu'),
+(7,'KK-20261007','JNE',10000,'RESI202600007','2026-10-01 10:00:00','dikemas'),
+(8,'KK-20261008','J&T',12000,'RESI202600008','2026-10-01 11:00:00','dikirim'),
+(9,'KK-20261009','SiCepat',10000,'RESI202600009','2026-10-01 12:00:00','diterima'),
+(10,'KK-20261010','JNE',12000,NULL,NULL,'gagal'),
+(11,'KK-20261011','J&T',10000,NULL,NULL,'menunggu'),
+(12,'KK-20261012','SiCepat',12000,'RESI202600012','2026-10-01 15:00:00','dikemas'),
+(13,'KK-20261013','JNE',10000,'RESI202600013','2026-10-01 16:00:00','dikirim'),
+(14,'KK-20261014','J&T',12000,'RESI202600014','2026-10-01 10:00:00','diterima'),
+(15,'KK-20261015','SiCepat',10000,NULL,NULL,'gagal'),
+(16,'KK-20261016','JNE',12000,NULL,NULL,'menunggu'),
+(17,'KK-20261017','J&T',10000,'RESI202600017','2026-10-01 13:00:00','dikemas'),
+(18,'KK-20261018','SiCepat',12000,'RESI202600018','2026-10-01 14:00:00','dikirim'),
+(19,'KK-20261019','JNE',10000,'RESI202600019','2026-10-01 15:00:00','diterima'),
+(20,'KK-20261020','J&T',12000,NULL,NULL,'gagal'),
+(21,'KK-20261021','SiCepat',10000,NULL,NULL,'menunggu'),
+(22,'KK-20261022','JNE',12000,'RESI202600022','2026-10-02 11:00:00','dikemas'),
+(23,'KK-20261023','J&T',10000,'RESI202600023','2026-10-02 12:00:00','dikirim'),
+(24,'KK-20261024','SiCepat',12000,'RESI202600024','2026-10-02 13:00:00','diterima'),
+(25,'KK-20261025','JNE',10000,NULL,NULL,'gagal'),
+(26,'KK-20261026','J&T',12000,NULL,NULL,'menunggu'),
+(27,'KK-20261027','SiCepat',10000,'RESI202600027','2026-10-02 16:00:00','dikemas'),
+(28,'KK-20261028','JNE',12000,'RESI202600028','2026-10-02 10:00:00','dikirim'),
+(29,'KK-20261029','J&T',10000,'RESI202600029','2026-10-02 11:00:00','diterima'),
+(30,'KK-20261030','SiCepat',12000,NULL,NULL,'gagal'),
+(31,'KK-20261031','JNE',10000,NULL,NULL,'menunggu'),
+(32,'KK-20261032','J&T',12000,'RESI202600032','2026-10-02 14:00:00','dikemas'),
+(33,'KK-20261033','SiCepat',10000,'RESI202600033','2026-10-02 15:00:00','dikirim'),
+(34,'KK-20261034','JNE',12000,'RESI202600034','2026-10-02 16:00:00','diterima'),
+(35,'KK-20261035','J&T',10000,NULL,NULL,'gagal'),
+(36,'KK-20261036','SiCepat',12000,NULL,NULL,'menunggu'),
+(37,'KK-20261037','JNE',10000,'RESI202600037','2026-10-02 12:00:00','dikemas'),
+(38,'KK-20261038','J&T',12000,'RESI202600038','2026-10-02 13:00:00','dikirim'),
+(39,'KK-20261039','SiCepat',10000,'RESI202600039','2026-10-02 14:00:00','diterima'),
+(40,'KK-20261040','JNE',12000,NULL,NULL,'gagal'),
+(41,'KK-20261041','J&T',10000,NULL,NULL,'menunggu'),
+(42,'KK-20261042','SiCepat',12000,'RESI202600042','2026-10-03 10:00:00','dikemas'),
+(43,'KK-20261043','JNE',10000,'RESI202600043','2026-10-03 11:00:00','dikirim'),
+(44,'KK-20261044','J&T',12000,'RESI202600044','2026-10-03 12:00:00','diterima'),
+(45,'KK-20261045','SiCepat',10000,NULL,NULL,'gagal'),
+(46,'KK-20261046','JNE',12000,NULL,NULL,'menunggu'),
+(47,'KK-20261047','J&T',10000,'RESI202600047','2026-10-03 15:00:00','dikemas'),
+(48,'KK-20261048','SiCepat',12000,'RESI202600048','2026-10-03 16:00:00','dikirim'),
+(49,'KK-20261049','JNE',10000,'RESI202600049','2026-10-03 10:00:00','diterima'),
+(50,'KK-20261050','J&T',12000,NULL,NULL,'gagal'),
+(51,'KK-20261051','SiCepat',10000,NULL,NULL,'menunggu'),
+(52,'KK-20261052','JNE',12000,'RESI202600052','2026-10-03 13:00:00','dikemas'),
+(53,'KK-20261053','J&T',10000,'RESI202600053','2026-10-03 14:00:00','dikirim'),
+(54,'KK-20261054','SiCepat',12000,'RESI202600054','2026-10-03 15:00:00','diterima'),
+(55,'KK-20261055','JNE',10000,NULL,NULL,'gagal'),
+(56,'KK-20261056','J&T',12000,NULL,NULL,'menunggu'),
+(57,'KK-20261057','SiCepat',10000,'RESI202600057','2026-10-03 11:00:00','dikemas'),
+(58,'KK-20261058','JNE',12000,'RESI202600058','2026-10-03 12:00:00','dikirim'),
+(59,'KK-20261059','J&T',10000,'RESI202600059','2026-10-03 13:00:00','diterima'),
+(60,'KK-20261060','SiCepat',12000,NULL,NULL,'gagal');
+
+-- Pemeriksaan jumlah data
+SELECT 'pelanggan' AS tabel, COUNT(*) AS jumlah FROM pelanggan
+UNION ALL SELECT 'alamat_pelanggan', COUNT(*) FROM alamat_pelanggan
+UNION ALL SELECT 'barang', COUNT(*) FROM barang
+UNION ALL SELECT 'keranjang', COUNT(*) FROM keranjang
+UNION ALL SELECT 'detail_keranjang', COUNT(*) FROM detail_keranjang
+UNION ALL SELECT 'pesanan', COUNT(*) FROM pesanan
+UNION ALL SELECT 'detail_pesanan', COUNT(*) FROM detail_pesanan
+UNION ALL SELECT 'pembayaran', COUNT(*) FROM pembayaran
+UNION ALL SELECT 'pengiriman', COUNT(*) FROM pengiriman;
+
+SELECT DATE(tgl_pesanan) AS tanggal, COUNT(*) AS jumlah_pesanan
+FROM pesanan GROUP BY DATE(tgl_pesanan) ORDER BY tanggal;
